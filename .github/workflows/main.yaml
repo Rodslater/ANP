@@ -6,7 +6,7 @@ on:
   pull_request:
     paths: ["R/**"]
 
-name: Documen
+name: Document
 
 jobs:
   document:
