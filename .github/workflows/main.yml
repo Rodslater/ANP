@@ -34,7 +34,7 @@ jobs:
         git config --local user.email "actions@github.com"
         git add data/*
         git commit -am "GH ACTION Headlines $(date)"
-        git reset --hard HEAD~3
+        git reset --hard HEAD~1
         git push origin main --delete 
         
                 
