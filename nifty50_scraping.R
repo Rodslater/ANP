@@ -20,4 +20,4 @@ colnames(estadual_semanal) <- c('datai','dataf', 'regiao', 'estado',
 
 
 #Exportar rds
-saveRDS("data/estadual_semanal.rds")
+saveRDS(estadual_semanal, "data/estadual_semanal.rds")
