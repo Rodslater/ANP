@@ -32,7 +32,8 @@ jobs:
       run: |
         git config --local user.name actions-user
         git config --local user.email "actions@github.com"
-        git reset --soft HEAD~2
+        git rm --cached *.xlsx
+        git rm --cached *.rds
         git add data/*
         git commit -am "GH ACTION Headlines $(date)"
         git push origin main
