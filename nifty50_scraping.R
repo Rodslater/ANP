@@ -4,7 +4,7 @@ library(curl)
 
 
 url <- "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/shlp/semanal/semanal-estados-desde-2013.xlsx"
-destfile <- "semanal_estados_desde_2013.xlsx"
+destfile <- "data/semanal_estados_desde_2013.xlsx"
 curl_download(url, destfile)
 estadual_semanal<- read_excel(destfile, 
                               col_types = c("date", "date", "text", "text", 
@@ -20,4 +20,4 @@ colnames(estadual_semanal) <- c('datai','dataf', 'regiao', 'estado',
 
 
 #Exportar rds
-saveRDS(estadual_semanal, "estadual_semanal.rds")
+saveRDS(estadual_semanal, "data/estadual_semanal.rds")
