@@ -1,0 +1,40 @@
+# Hourly scraping
+name: nifty50scrape
+
+# Controls when the action will run.
+on:
+ push:
+    branches: main
+
+
+jobs: 
+  autoscrape:
+    # The type of runner that the job will run on
+    runs-on: macOS-11
+
+    # Load repo and install R
+    steps:
+    - uses: actions/checkout@master
+    - uses: r-lib/actions/setup-r@master
+
+    # Set-up R
+    - name: Install packages
+      run: |
+        R -e 'install.packages("tidyverse")'
+        R -e 'install.packages("readxl")'
+        R -e 'install.packages("curl")'
+    # Run R script
+    - name: Scrape
+      run: Rscript nifty50_scraping.R
+      
+ # Add new files in data folder, commit along with other modified files, push
+    - name: Commit files
+      run: |
+        git config --local user.name actions-user
+        git config --local user.email "actions@github.com"
+        git add data/*
+        git commit -am "GH ACTION Headlines $(date)"
+        git push -f origin master
+      env:
+        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+        username: github-actions
