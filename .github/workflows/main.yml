@@ -35,7 +35,7 @@ jobs:
         git add data/*
         git commit -am "GH ACTION Headlines $(date)"
         git reset --hard HEAD~1
-        git push origin/main --delete 
+        git push origin main
         
                 
       env:
