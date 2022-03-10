@@ -34,12 +34,10 @@ jobs:
         git config --local user.email "actions@github.com"
         git add data/*
         git commit -am "GH ACTION Headlines $(date)"
-        git reset --hard HEAD~3  # reset current branch to 3 commits ago
-        git push origin master --delete  # do a very very bad bad thing
-        git push origin master  # regular push
+        git reset --hard HEAD~3
+        git push origin main --delete 
         
-        
-        
+                
       env:
         REPO_KEY: ${{secrets.GITHUB_TOKEN}}
         username: github-actions
